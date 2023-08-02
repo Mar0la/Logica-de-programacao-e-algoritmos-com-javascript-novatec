@@ -1,15 +1,35 @@
 const prompt = require("prompt-sync")() // adiciona pacote para entrada de dados
 
+const valorMoedas = parseFloat(prompt(('valor R$: ')));
 
-const velocidadePermitida = Number(prompt('Escreva a velocidade permitida:'))
-const velocidadeCondutor = Number(prompt('Escreva a velocidade do: '))
+const tabelaValores = [
+  { valor: 1.00, tempo: 30 },
+  { valor: 1.75, tempo: 60 },
+  { valor: 3.00, tempo: 120 }
+];
 
-const multaLeve = (velocidadePermitida * 20) / 100
+let tempoPermanencia = 0;
+let troco = 0;
+let valorRestante = valorMoedas;
 
-if(velocidadeCondutor <= velocidadePermitida) {
-  console.log('Sem multa')
-} else if(velocidadeCondutor  <= multaLeve + velocidadePermitida){
-  console.log('Multa leve')
+for (let i = tabelaValores.length - 1; i >= 0; i--) {
+  const valorAtual = tabelaValores[i].valor;
+
+  while (valorRestante >= valorAtual) {
+    tempoPermanencia += tabelaValores[i].tempo;
+    valorRestante -= valorAtual;
+  }
+}
+
+if (valorRestante > 0) {
+  troco = valorRestante;
+}
+
+if (tempoPermanencia === 0) {
+  console.log('Valor Insuficiente');
 } else {
-  console.log('Multa Grave')
+  console.log(`Tempo de Permanência: ${tempoPermanencia} min`);
+  if (troco > 0) {
+    console.log(`Troco: R$ ${troco.toFixed(2)}`);
+  }
 }

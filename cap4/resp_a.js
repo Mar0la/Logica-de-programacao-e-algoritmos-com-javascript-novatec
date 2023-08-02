@@ -1,17 +1,15 @@
-
-
 const prompt = require("prompt-sync")() // adiciona pacote para entrada de dados
 
-const asteristico = '---------------------------------------------------------------------------------'
 
-const numero = Number(prompt('Digite um número: '))
-if(numero % 2 === 0){
-  console.log(`${asteristico}\nO número é par\n${asteristico}`)
+const velocidadePermitida = Number(prompt('Escreva a velocidade permitida:'))
+const velocidadeCondutor = Number(prompt('Escreva a velocidade do: '))
+
+const multaLeve = (velocidadePermitida * 20) / 100
+
+if(velocidadeCondutor <= velocidadePermitida) {
+  console.log('Sem multa')
+} else if(velocidadeCondutor  <= multaLeve + velocidadePermitida){
+  console.log('Multa leve')
 } else {
-  console.log(`${asteristico}\nO número é impar\n${asteristico}`)
-
+  console.log('Multa Grave')
 }
-
-
-
-
