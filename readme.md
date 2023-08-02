@@ -10,13 +10,13 @@ Resoluções das questões e exemplos do livro **_Lógica de programação e Alg
 
 ###  Instalação e Execução do Projeto
 
-Clone este repositório
+- Clone este repositório
 
 ```
 > git clone https://github.com/Mar0la/Logica-de-programacao-e-algoritmos-com-javascript-novatec
 ```
 
-Instale as dependências com o npm
+- Instale as dependências com o npm
 
 ```
 npm install
